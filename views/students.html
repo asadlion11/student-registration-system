@@ -1,0 +1,67 @@
+<div class="container mx-auto px-4 pt-16 m-10 pb-8">
+    <h1 class="text-3xl font-bold mb-6">Student Registration</h1>
+
+        <!-- Registration Form -->
+        <form ng-submit="student.id ? updateStudent() : addStudent()" class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" ng-model="student.firstName" placeholder="First Name" class="border  p-2 rounded" required>
+                <input type="text" ng-model="student.middleName" placeholder="Middle Name" class="border p-2 rounded">
+                <input type="text" ng-model="student.lastName" placeholder="Last Name" class="border p-2 rounded" required>
+                <select ng-model="student.gender" class="border p-2 rounded" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <input type="text" ng-model="student.address" placeholder="Address" class="border p-2 rounded">
+                <input type="text" ng-model="student.mobileNumber" placeholder="Mobile Number" class="border p-2 rounded">
+                <select ng-model="student.course" class="border p-2 rounded" required>
+                    <option value="">Select Course</option>
+                    <option value="HTML and CSS">HTML and CSS</option>
+                    <option value="React JS">React JS</option>
+                    <option value="Next JS">Next JS</option>
+                    <option value="Node and Express">Node and Express</option>
+                </select>
+            </div>
+
+            <!-- Add/Update Buttons -->
+            <div class="mt-4">
+                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 hover:cursor-pointer transition duration-300">
+                    {{ student.id ? 'Update Student' : 'Register Student' }}
+                </button>
+                <button type="button" ng-click="student = {}" class="bg-gray-500 text-white px-6 py-2 rounded ml-2 hover:bg-gray-600 hover:cursor-pointer transition duration-300">
+                    Clear Form
+                </button>
+            </div>
+        </form>
+        <!-- Students Table -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Registered Students</h2>
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="p-2">ID</th>
+                        <th class="p-2">Full Name</th>
+                        <th class="p-2">Gender</th>
+                        <th class="p-2">Address</th>
+                        <th class="p-2">Mobile Number</th>
+                        <th class="p-2">Course</th>
+                        <th class="p-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="student in students">
+                        <td class="p-2">{{ student.id }}</td>
+                        <td class="p-2">{{ student.firstName }} {{ student.middleName }} {{ student.lastName }}</td>
+                        <td class="p-2">{{ student.gender }}</td>
+                        <td class="p-2">{{ student.address }}</td>
+                        <td class="p-2">{{ student.mobileNumber }}</td>
+                        <td class="p-2">{{ student.course }}</td>
+                        <td class="p-2">
+                            <i class="fa-solid fa-pen-to-square text-yellow-500 text-white px-1 py-1 m-2 hover:cursor-pointer" ng-click="editStudent(student)"></i>
+                            <i class="fa-solid fa-trash text-red-500 text-red-500 px-1 py-1 m-2 over:cursor-pointer" ng-click="deleteStudent(student.id)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

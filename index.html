@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = 'myApp'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./modules/app.js"></script>
+    <title>Student Registration System</title>
+</head>
+<body>
+
+    <!-- As ng-incluse tag -->
+    <ng-include src = '"./components/header.html"'></ng-include>
+    
+    <!-- As ng-view tag -->
+    <!-- <header ng-include = '"./components/header.html"'></header> -->
+
+    <!-- ng-view is a directive in AngularJS that is used to dynamically load and display templates based on the current route. It acts as a placeholder where the content of the current route is injected. -->
+    <main ng-view></main>
+
+</body>
+</html>
