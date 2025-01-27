@@ -6,3 +6,4 @@ Technologies and Tools Used:
 3. Database:MySQL
 4. Styling: Tailwind CSS
 5. APIs tests: Postman
+6. Icons: Fontawesome
