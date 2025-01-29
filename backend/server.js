@@ -11,11 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// app.use(cors({
-//     origin: 'https://alifsystem.vercel.app', // Replace with your frontend URL
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
-//     credentials: true, // Allow cookies/credentials if needed
-//   }));
+
 
 
 //Routes

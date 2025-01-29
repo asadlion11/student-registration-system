@@ -1,13 +1,13 @@
 import mysql from 'mysql2';
 import {host, user, password, db_name, db_port, connection_uri} from '../config/config.js';
 // Create MySQL connection using local connection to mysql server
-// const db = mysql.createConnection({
-//     host: '172.17.159.254', //WSL IP address, I am using Mysql-server in Ubuntu(as WSL)
-//     port: 3306,             
-//     user: 'asad',           
-//     password: 'asad',       
-//     database: 'student_db'  
-// });
+const db = mysql.createConnection({
+    host: '172.17.159.254', //WSL IP address, I am using Mysql-server in Ubuntu(as WSL)
+    port: 3306,             
+    user: 'asad',           
+    password: 'asad',       
+    database: 'student_db'  
+});
 
 
 // Create MySQL connection using clever cloud connection(Mysql-server)
@@ -22,7 +22,7 @@ import {host, user, password, db_name, db_port, connection_uri} from '../config/
 
 // Create MySQL connection using clever cloud connection(Mysql-server)
 //CONNECTION_URI directly, which includes all connection details (host, user, password, database name, db port).
-const db = mysql.createConnection(connection_uri);
+// const db = mysql.createConnection(connection_uri);
 
 
 // Connect to MySQL
