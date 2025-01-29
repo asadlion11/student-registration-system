@@ -34,7 +34,8 @@ app.controller('studentController', ['$scope', '$http', function($scope, $http){
 
    //Fetch all students's info
    $scope.fetchStudents = () => {
-      $http.get('http://localhost:3000/api/students') //api
+      //http://localhost:3000
+      $http.get('https://student-registration-system-4s1f.onrender.com/api/students') //api
 
       //sucess
       .then(response => {
@@ -54,7 +55,7 @@ app.controller('studentController', ['$scope', '$http', function($scope, $http){
 
    //Add Student
 $scope.addStudent =() => {
-   $http.post('http://localhost:3000/api/new-student', $scope.student)
+   $http.post('https://student-registration-system-4s1f.onrender.com/api/new-student', $scope.student)
    //sucess
    .then(() => {
       alert('Student registred successfully')
@@ -76,7 +77,7 @@ $scope.addStudent =() => {
 
    // Update student
    $scope.updateStudent = () => {
-       $http.put(`http://localhost:3000/api/update-student/${$scope.student.id}`, $scope.student)
+       $http.put(`https://student-registration-system-4s1f.onrender.com/api/update-student/${$scope.student.id}`, $scope.student)
            .then(() => {
                // sucess
                alert('Student updated successfully');
@@ -97,7 +98,7 @@ $scope.addStudent =() => {
   
       // if yes
       if (isConfirmed) {
-          $http.delete(`http://localhost:3000/api/delete-student/${id}`)
+          $http.delete(`https://student-registration-system-4s1f.onrender.com/api/delete-student/${id}`)
               .then(() => {
                alert("Student deleted successfully!"); 
                $scope.fetchStudents();
