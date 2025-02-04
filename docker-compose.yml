@@ -1,57 +1,97 @@
-version: '3.8'  # You can adjust the version if needed
+# version: '3.8'  # You can adjust the version if needed
+
+# services:
+#   frontend:
+#     build:
+#       context: ./frontend
+#       dockerfile: Dockerfile  # This assumes your Dockerfile is named "Dockerfile"
+#     image: srs-front-img  # Custom image name
+#     container_name: srs-front-cont  # Custom container name
+#     ports:
+#       - "8080:80"  # Map host port 8080 to container port 80 (nginx)
+#     depends_on:
+#       - backend
+#     environment:
+#       - API_URL=http://backend:8000  # Point to backend container
+#     networks:
+#       - srs-network
+
+#   backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile  # This assumes your Dockerfile is named "Dockerfile"
+#     image: srs-back-img  # Custom image name
+#     container_name: srs-back-cont  # Custom container name
+#     ports:
+#       - "8000:8000"  # Map host port 8000 to container port 8000
+#     depends_on:
+#       - db
+#     environment:
+#       - DB_HOST=db
+#       - DB_USER=asad           # Updated database credentials
+#       - DB_PASSWORD=asad
+#       - DB_NAME=student_db
+#     networks:
+#       - srs-network
+
+#   db:
+#     image: mysql   # Or another version of MySQL if you prefer
+#     container_name: srs-db-cont  # Custom container name
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: asad  # Updated root password
+#       MYSQL_DATABASE: student_db  # Updated database name
+#       MYSQL_USER: asad           # Added MySQL user
+#       MYSQL_PASSWORD: asad       # Added MySQL user password
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - srs-data:/var/lib/mysql  # Persist MySQL data with custom volume name
+#     networks:
+#       - srs-network
+
+# volumes:
+#   srs-data:  # Custom volume name
+
+# networks:
+#   srs-network:  # Custom network name
+
+
+
+
+#ANOTHER WAY
+version: '3.8'
 
 services:
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile  # This assumes your Dockerfile is named "Dockerfile"
-    image: srs-front-img  # Custom image name
-    container_name: srs-front-cont  # Custom container name
+    build: ./frontend
     ports:
-      - "8080:80"  # Map host port 8080 to container port 80 (nginx)
-    depends_on:
-      - backend
+      - "8080:80"
     environment:
-      - API_URL=http://backend:8000  # Point to backend container
-    networks:
-      - srs-network
+      - API_URL=http://backend:8000
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile  # This assumes your Dockerfile is named "Dockerfile"
-    image: srs-back-img  # Custom image name
-    container_name: srs-back-cont  # Custom container name
+    build: ./backend
     ports:
-      - "8000:8000"  # Map host port 8000 to container port 8000
-    depends_on:
-      - db
+      - "8000:8000"
     environment:
       - DB_HOST=db
-      - DB_USER=asad           # Updated database credentials
+      - DB_USER=asad
       - DB_PASSWORD=asad
       - DB_NAME=student_db
-    networks:
-      - srs-network
-
+ 
   db:
-    image: mysql   # Or another version of MySQL if you prefer
-    container_name: srs-db-cont  # Custom container name
+    image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: asad  # Updated root password
-      MYSQL_DATABASE: student_db  # Updated database name
-      MYSQL_USER: asad           # Added MySQL user
-      MYSQL_PASSWORD: asad       # Added MySQL user password
+      MYSQL_ROOT_PASSWORD: asad
+      MYSQL_DATABASE: student_db
+      MYSQL_USER: asad
+      MYSQL_PASSWORD: asad
     ports:
       - "3306:3306"
     volumes:
-      - srs-data:/var/lib/mysql  # Persist MySQL data with custom volume name
-    networks:
-      - srs-network
+      - srs-data:/var/lib/mysql
 
 volumes:
-  srs-data:  # Custom volume name
-
-networks:
-  srs-network:  # Custom network name
+  srs-data:
