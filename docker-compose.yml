@@ -59,19 +59,62 @@
 
 
 
-#ANOTHER WAY
+#ANOTHER  SHORT WAY
+# version: '3.8'
+
+# services:
+#   frontend:
+#     build: ./frontend
+#     ports:
+#       - "8080:80"
+#     environment:
+#       - API_URL=http://backend:8000
+
+#   backend:
+#     build: ./backend
+#     ports:
+#       - "8000:8000"
+#     environment:
+#       - DB_HOST=db
+#       - DB_USER=asad
+#       - DB_PASSWORD=asad
+#       - DB_NAME=student_db
+ 
+#   db:
+#     image: mysql
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: asad
+#       MYSQL_DATABASE: student_db
+#       MYSQL_USER: asad
+#       MYSQL_PASSWORD: asad
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - srs-data:/var/lib/mysql
+
+# volumes:
+#   srs-data:
+
+
+
+
+
+#Images will come from the docker hub repository
 version: '3.8'
+
 
 services:
   frontend:
-    build: ./frontend
+    image: asadlion/srs-frontend-img:v1
     ports:
       - "8080:80"
     environment:
       - API_URL=http://backend:8000
 
+
   backend:
-    build: ./backend
+    image: asadlion/srs-backend-img:v1
     ports:
       - "8000:8000"
     environment:
@@ -79,7 +122,8 @@ services:
       - DB_USER=asad
       - DB_PASSWORD=asad
       - DB_NAME=student_db
- 
+
+
   db:
     image: mysql
     restart: always
@@ -92,6 +136,7 @@ services:
       - "3306:3306"
     volumes:
       - srs-data:/var/lib/mysql
+
 
 volumes:
   srs-data:
