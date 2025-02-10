@@ -106,7 +106,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: asadlion/srs-frontend-img:v1
+    image: asadlion/srs-frontend-img:v2
     ports:
       - "8080:80"
     environment:
@@ -114,7 +114,7 @@ services:
 
 
   backend:
-    image: asadlion/srs-backend-img:v1
+    image: asadlion/srs-backend-img:v2
     ports:
       - "8000:8000"
     environment:

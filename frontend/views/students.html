@@ -1,8 +1,8 @@
 <div class="container mx-auto px-4 pt-16 m-10 pb-8">
-    <h1 class="text-3xl font-bold mb-6">Student Registration</h1>
+    <h1 class="text-2xl font-bold mb-4">Student Registration</h1>
 
         <!-- Registration Form -->
-        <form ng-submit="student.id ? updateStudent() : addStudent()" class="bg-white p-6 rounded-lg shadow-md mb-8">
+        <form ng-submit="student.id ? updateStudent() : addStudent()" class="bg-white p-3 rounded-lg shadow-md mb-8 text-sm">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input type="text" ng-model="student.firstName" placeholder="First Name" class="border  p-2 rounded" required>
                 <input type="text" ng-model="student.middleName" placeholder="Middle Name" class="border p-2 rounded">
@@ -36,7 +36,7 @@
         <!-- Students Table -->
         <div class="bg-white p-6 rounded-lg shadow-md">
             <h2 class="text-2xl font-bold mb-4">Registered Students</h2>
-            <table class="w-full">
+            <table class="w-full text-sm">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="p-2">ID</th>

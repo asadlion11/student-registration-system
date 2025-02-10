@@ -35,7 +35,7 @@ app.controller('studentController', ['$scope', '$http', function($scope, $http){
    //Fetch all students's info
    $scope.fetchStudents = () => {
       //http://localhost:80
-      $http.get('http://localhost:8000/api/students') //api
+      $http.get(`${config.API_BASE_URL}/api/students`) //api
 
       //sucess
       .then(response => {
@@ -55,7 +55,7 @@ app.controller('studentController', ['$scope', '$http', function($scope, $http){
 
    //Add Student
 $scope.addStudent =() => {
-   $http.post('http://localhost:8000/api/new-student', $scope.student)
+   $http.post(`${config.API_BASE_URL}/api/new-student`, $scope.student)
    //sucess
    .then(() => {
       alert('Student registred successfully')
@@ -77,7 +77,7 @@ $scope.addStudent =() => {
 
    // Update student
    $scope.updateStudent = () => {
-       $http.put(`http://localhost:8000/api/update-student/${$scope.student.id}`, $scope.student)
+       $http.put(`${config.API_BASE_URL}/api/update-student/${$scope.student.id}`, $scope.student)
            .then(() => {
                // sucess
                alert('Student updated successfully');
@@ -98,7 +98,7 @@ $scope.addStudent =() => {
   
       // if yes
       if (isConfirmed) {
-          $http.delete(`http://localhost:8000/api/delete-student/${id}`)
+          $http.delete(`${config.API_BASE_URL}/api/delete-student/${id}`)
               .then(() => {
                alert("Student deleted successfully!"); 
                $scope.fetchStudents();
