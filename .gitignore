@@ -4,4 +4,4 @@
 
 **/Dockerfile
 
-/frontend/config.js
+/frontend/config/config.js
