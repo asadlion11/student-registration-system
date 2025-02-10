@@ -110,7 +110,11 @@ services:
     ports:
       - "8080:80"
     environment:
-      - API_URL=http://backend:8000
+      - API_URL=https://alifsrs-backend.vercel.app
+    depends_on:
+      - backend
+    networks:
+      - srs-network
 
 
   backend:
@@ -118,25 +122,36 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DB_HOST=db
-      - DB_USER=asad
-      - DB_PASSWORD=asad
-      - DB_NAME=student_db
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+    depends_on:
+      - db
+    networks:
+      - srs-network
 
-
+    
   db:
     image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: asad
-      MYSQL_DATABASE: student_db
-      MYSQL_USER: asad
-      MYSQL_PASSWORD: asad
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:3306"
     volumes:
       - srs-data:/var/lib/mysql
+    networks:
+      - srs-network
 
 
 volumes:
   srs-data:
+
+networks:
+  srs-network:
